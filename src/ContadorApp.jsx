@@ -6,12 +6,23 @@ export const ContadorApp = ({ value }) => {
   const handleClick = () =>{
     setContador(contador + 1)
   }
-
+  const estiloContenedor = {
+    flexDirection: 'column',
+    textAlign: 'center',
+    marginTop: '50px'
+  };
   return (
     <>
-      <h1>Contador nuevo: </h1>
-        <p>{contador}</p>
-      <button onClick={handleClick}> Soy un boton</button>
+      <div style={estiloContenedor}>
+      <h5>Usando el boton para cambiar el 'Estado'  </h5>
+        <h2>{contador}</h2>
+      <button 
+        className="btn btn-primary"
+        onClick={handleClick}>
+          Soy el boton a usar
+      </button>
+        
+      </div>
     </>
   )
 }
