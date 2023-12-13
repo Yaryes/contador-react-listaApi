@@ -3,9 +3,14 @@ import { AgregarTarea } from "./components/AgregarTarea"
 
 const Items = ({nombre, visto}) => {
     return(
-        <li>{nombre}
-            {visto ? ' ✔' : ' ❌'}
-        </li>   
+        <>
+            <div>
+                <li>{nombre}
+                    {visto ? ' ✔' : ' ❌'}
+                </li>   
+            </div>
+        </>
+        
     )
 }
 export const ListadoApp = () => {
@@ -22,10 +27,8 @@ export const ListadoApp = () => {
     ]
     
     const [arreglo , setArreglo] = useState(listadoSessiones)
-    // console.log(arreglo)
-
     const onAgregarTarea = (nuevoString) => {
-        //*********** VALIDACION DE PARA QUE NO LLEGUE VACIO EL INPUT***************/
+        // VALIDACIÓN DE PARA QUE NO LLEGUE VACÍO EL INPUT
         let valor = nuevoString.trim()
         if (valor < 1) return
         const nuevaTarea = {
@@ -36,11 +39,19 @@ export const ListadoApp = () => {
         setArreglo([...arreglo, nuevaTarea])
     }
     return (
-        <>
+        <>  
             <h1>Listado de temas</h1>
-            <ol>
-                {arreglo.map(x => <Items key={x.id} nombre={x.nombre} visto={x.visto}></Items>)}
-            </ol>
+                <ol className="d-flex flex-column-reverse">
+                    {arreglo.map( x => 
+                    <Items 
+                        key={x.id} 
+                        nombre={x.nombre} 
+                        visto={x.visto}>
+                    </Items>)}
+                </ol>
+            <div className="text-center">
+                <p>"Usando .flex-column-reverse, el listado de tareas cambian de direccion"</p>
+            </div>
             <AgregarTarea aggTarea={onAgregarTarea}></AgregarTarea>
         </>
     )

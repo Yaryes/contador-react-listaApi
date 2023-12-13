@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export const AgregarTarea = ({aggTarea}) => {
 
-  const[inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState('')
   const onInputChange = (event) =>  {
     setInputValue(event.target.value)
   }
@@ -10,10 +10,11 @@ export const AgregarTarea = ({aggTarea}) => {
     event.preventDefault()
     aggTarea(inputValue)
   }
-  
+    
   return (
     <form onSubmit={onSubmit}>
       <input type="text" 
+        className="form-control"
         placeholder='Ingrese nueva Tarea: '
         value={inputValue}
         onChange={onInputChange}

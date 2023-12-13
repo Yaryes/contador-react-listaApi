@@ -7,9 +7,10 @@ export const UserApp = () => {
     }
     return (
         <>
+            
             <h1>Libros Disponibles:</h1>
             <UserList endPoint={endPoint}></UserList>
-            <button onClick={handleFetch}>Aqui se llama a la Api</button>
+            <button className="btn btn-success" onClick={handleFetch}>Aqui se llama a la Api</button>
         </>
     )
 }
